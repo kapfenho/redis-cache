@@ -1,7 +1,13 @@
 set cons:23425134 "{id: 23425134, fn: tom, ln: tiger, zip: 1020, msisdn: 6601234567, acct: 9264273932 }"
+hmset cons:23425134 id: 23425134 fn 'tom' ln 'tiger' zip 1020 msisdn 6601234567 acct 9264273932 
+
+set cons:23425135 "{id: 23425135, fn: tom, ln: tiger, zip: 1020, msisdn: 6601234567, acct: 9264273932 }"
+hmset cons:23425135 id: 23425135 fn 'tom' ln 'tiger' zip 1020 msisdn 6601234567 acct 9264273932 
+
 hset cons:lookup:msisdn 6601234567 23425134
 hset cons:lookup:acct 9264273932 23425134
-hset cons:lookup:ln tiger 23425134
+# hset cons:lookup:ln tiger 23425134
+sadd cons:ln:tiger 23425134
 
 
 hget cons:lookup:msisdn 6601234567
