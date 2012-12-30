@@ -1,28 +1,21 @@
 # redis-cache
 
-Creating a telco customer search cache with [redis.io](http://redis.io).
-
-The cache is designed to serve a small number of search field combinations of an multi-field search form.
+Example of using a [redis.io](http://redis.io) database as a search
+cache.
 
 ## Use Case and Architecture
 
-A common customer search form shall deliver result sets from
-several CRM systems.
+The cache is designed to serve a small number of search field combinations of an multi-field search form.
 
 The search shall be very responsive and deliver a data set with all
-necessary attributes to identify a customer, as well as the CRM system hosting it.
-
-After selecting one customer from the search result set, the
-customer view from the corresponding CRM system is called.
-
-However, no look-ahead is shall be done. So only data that is
-explicitely searched for shall be displayed.
+necessary attributes to identify a customer and the system hosting it.
 
 ## The Search
 
 The search covers consumer and business customers:
 
 **Fields:**
+
 + Company name
 + First name
 + Last name
@@ -58,10 +51,6 @@ The search covers consumer and business customers:
 
 ### Todo
 
-+ create rake interface instead shell script
++ create rake/thor interface instead shell script
 + create sample sinatra app for lookups
-+ work on README
  
-
-
-
