@@ -4,7 +4,9 @@
 require 'rake/clean'
 require_relative 'lib/import.rb'
 
-task :default => [:import]
+task :default => [:native]
+
+CLEAN.include 'output/*'
 
 desc "Import the data directly to database, slower than native"
 task :import do
@@ -12,22 +14,21 @@ task :import do
   a.import
 end
 
-CLEAN.include "output/*"
-
 desc "Generate the native stream file with data"
 task :native do
-  a = Import.new(:native, 'output/spool.redis')
-  a.import
+  Import.new(:native, 'output/native').import
 end
 
 desc "Generate sample input with random data"
 task :sample do
-  ruby 'lib/sample.rb'
+  ruby 'lib/sample.rb data/sample.csv'
 end
 
 desc "Stream native file to database"
 task :stream do
-  # todo: pv output/spool.redis | redis-cli --pipe 
+  # tty_output = true
+  # sh 'lib/stream.sh output/native'
+  %x[sh 'lib/stream.sh' 'output/native']
 end
 
 

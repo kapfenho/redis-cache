@@ -1,7 +1,6 @@
 ### redis native spooler
-#
 
-class NativeSpooler
+class SpoolerNative
 
   def initialize(fname, nr = 1)
     @fname = fname
@@ -24,6 +23,4 @@ class NativeSpooler
   end
 
 end
-
-
 

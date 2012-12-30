@@ -1,6 +1,6 @@
 ##### redis db spooler
 
-class DBSpooler
+class SpoolerDB
 
   def initialize()
     @db = Redis.new
