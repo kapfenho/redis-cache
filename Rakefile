@@ -26,8 +26,6 @@ end
 
 desc "Stream native file to database"
 task :stream do
-  # tty_output = true
-  # sh 'lib/stream.sh output/native'
   %x[sh 'lib/stream.sh' 'output/native']
 end
 
