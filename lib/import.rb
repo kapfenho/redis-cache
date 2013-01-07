@@ -4,7 +4,8 @@
 # Author: horst kapfenberger
 #
 
-%w[rubygems redis json logger benchmark].each { |r| require r }
+# %w[rubygems redis json logger].each { |r| require r }
+%w[redis json logger].each { |r| require r }
 require_relative 'spooler_native'
 require_relative 'spooler_db'
 
@@ -28,6 +29,7 @@ class Import
         @logger.error "Invalid data in row #{i}: #{l}"
       else
         h = Hash[CKEYS.zip(a)]
+        # o = Customer.new(h)
         @s.spool('set' , "cons:#{h[:id]}", h.to_json)
         @s.spool('hset', 'cons:lookup:msisdn', h[:msisdn], h[:id])
         @s.spool('hset', 'cons:lookup:acct', h[:acct], h[:id])

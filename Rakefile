@@ -29,4 +29,8 @@ task :stream do
   %x[sh 'lib/stream.sh' 'output/native']
 end
 
+desc "Start frontend server"
+task :server do
+  ruby -rubygems lib/server.rb
+end
 
