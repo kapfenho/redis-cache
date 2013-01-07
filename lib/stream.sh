@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SRC=pv
 if ! type ${SRC} > /dev/null; then

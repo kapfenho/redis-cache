@@ -2,7 +2,7 @@ require 'SecureRandom'
 
 f = File.new(ARGV[0],'w')
 
-for id in 1000000..2000000
+for id in 1000000..1200000
   msisdn = '660' + Random.rand(1000000..9999999).to_s
   acct = Random.rand(9000000000..9399999999)
   fn = SecureRandom.urlsafe_base64(Random.rand(3..12))

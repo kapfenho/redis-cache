@@ -8,6 +8,8 @@ task :default => [:native]
 
 CLEAN.include 'output/*'
 
+directory "output"
+
 desc "Import the data directly to database, slower than native"
 task :import do
   a = Import.new(:db)
@@ -15,7 +17,7 @@ task :import do
 end
 
 desc "Generate the native stream file with data"
-task :native do
+task :native => ["output"] do
   Import.new(:native, 'output/native').import
 end
 
@@ -31,6 +33,6 @@ end
 
 desc "Start frontend server"
 task :server do
-  ruby -rubygems lib/server.rb
+  ruby '-rubygems lib/server.rb'
 end
 

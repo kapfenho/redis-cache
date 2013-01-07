@@ -1,23 +1,16 @@
 require 'sinatra'
 require 'redis'
-
-# class Customer
-#   def self.search(params)
-#     if p[:msisdn]
-      
-# end
+require_relative 'customer'
 
 db = Redis.new
 
 get '/' do
+  @customers ||= []
   erb :index
 end
 
 get '/search' do
-  # params[:fname]
-  # @customers = Customer.search(params)
-  id = db.hget 'cons:lookup:msisdn', p[:msisdn]
-  cust = db.get "cons:#{id}"
+  @customers = Customer.search(db, params)
   erb :index
 end
 

@@ -14,4 +14,8 @@ hget cons:lookup:msisdn 6601234567
 get cons:23425134
 
 
-
+# http://www.ruby-doc.org/stdlib-1.9.3/libdoc/json/rdoc/JSON.html
+# http://flori.github.com/json/
+# http://flori.github.com/json/doc/index.html
+# http://www.json.org
+  
