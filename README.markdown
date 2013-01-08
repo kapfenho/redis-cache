@@ -3,6 +3,39 @@
 Example of using a [redis.io](http://redis.io) database as a search
 cache.
 
+## Installation
+
+### Download and start Redis
+
+E.g. on OS X with Homebrew: `$ brew install redis`
+
+Start it with `$ redis-server /usr/local/etc/redis.conf`
+
+### Get this app
+
+    $ git clone git://github.com/kapfenho/redis-cache.git
+    $ cd redis-cache
+    $ bundle install
+
+### Fill the database
+
+Generate test data:
+
+    $ rake sample    # generate sample data
+
+You can fill the database with single calls or stream the data.
+Streaming will be faster for big data sets.
+
+    $ rake import    # direct calls
+
+Or
+    $ rake native    # generate binary stream
+    $ rake stream    # import stream
+
+### Run the web frontend
+
+    $ rake server
+
 ## Use Case and Architecture
 
 The cache is designed to serve a small number of search field combinations of an multi-field search form.
@@ -51,6 +84,4 @@ The search covers consumer and business customers:
 
 ### Todo
 
-+ create rake/thor interface instead shell script
-+ create sample sinatra app for lookups
  
