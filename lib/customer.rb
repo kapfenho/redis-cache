@@ -5,8 +5,6 @@ class Customer
   CKEYS = [:id, :msisdn, :acct, :fn, :ln, :zip]
 
   CKEYS.each do |a|
-    # to check, symbols?
-    # define_method(a.to_s) { @h[a.to_s] }
     define_method(a) { @h[a] }
   end
 
