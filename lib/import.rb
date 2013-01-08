@@ -1,20 +1,21 @@
-%w[redis json logger].each { |r| require r }
-require_relative 'spooler_native'
-require_relative 'spooler_db'
-require_relative 'customer'
+%w[bundler/setup redis json logger].each    { |r| require r }
+%w[spooler_native spooler_db customer].each { |r| require_relative r }
 
 class Import
 
-  def initialize(dest = :db, fname = '')
-    @s = SpoolerNative.new(fname) if dest != :db
-    @s ||= SpoolerDB.new
+  def initialize(dest, in_file, sfile = '')
+    @s = case dest
+         when :db then SpoolerDB.new
+         else          SpoolerNative.new(sfile)
+         end
+    @in_file = in_file
     @logger = Logger.new(STDERR)
     @logger.level = Logger::INFO
   end
 
   def import
     i = 0
-    File.open('data/sample.csv', "r").each_line do |l|
+    File.open(@in_file, 'r').each_line do |l|
       a = l.strip!.gsub(/"/, '').split(';')
       c = Customer.new(a)
 

@@ -1,3 +1,5 @@
+# require 'rubygems'
+require 'bundler/setup'
 require 'sinatra'
 require 'redis'
 require 'haml'
@@ -8,12 +10,14 @@ db = Redis.new
 
 get '/' do
   @customers ||= []
+  @ct = 0
   haml :index, :format => :html5
 end
 
 get '/search' do
+  start = Time.now
   @customers = Customer.search(db, params)
-  puts @customers.inspect
+  @ct = Time.now - start
   haml :index, :format => :html5
 end
 

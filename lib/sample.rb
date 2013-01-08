@@ -1,8 +1,10 @@
 require 'SecureRandom'
 
-f = File.new(ARGV[0],'w')
+BEG = 1_000_000 
+f = File.new(ARGV[1],'w')
 
-for id in 1000000..1200000
+for id in BEG..(BEG + ARGV[0].to_i - 1)
+
   msisdn = '660' + Random.rand(1000000..9999999).to_s
   acct = Random.rand(9000000000..9399999999)
   fn = SecureRandom.urlsafe_base64(Random.rand(3..12))

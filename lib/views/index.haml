@@ -29,6 +29,7 @@
     %table
       %thead
         %tr
+          %th ID
           %th MSISDN
           %th Account
           %th First name
@@ -37,9 +38,13 @@
       %tbody
       - @customers.each do |c|
         %tr
+          %td= c.id
           %td= c.msisdn
           %td= c.acct
           %td= c.fn
           %td= c.ln
           %td= c.zip
 
+    %br
+    Call time in sec:
+    = @ct.to_s unless @ct.nil?
