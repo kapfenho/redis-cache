@@ -29,6 +29,7 @@ Streaming will be faster for big data sets.
     $ rake import    # direct calls
 
 Or
+
     $ rake native    # generate binary stream
     $ rake stream    # import stream
 
