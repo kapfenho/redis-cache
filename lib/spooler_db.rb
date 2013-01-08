@@ -1,5 +1,3 @@
-##### redis db spooler
-
 class SpoolerDB
 
   def initialize()

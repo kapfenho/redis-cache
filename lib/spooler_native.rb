@@ -1,5 +1,3 @@
-### redis native spooler
-
 class SpoolerNative
 
   def initialize(fname, nr = 1)

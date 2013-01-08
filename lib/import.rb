@@ -1,18 +1,9 @@
-##### redis-cache.rb
-#
-# Fill redis cache with data
-# Author: horst kapfenberger
-#
-
-# %w[rubygems redis json logger].each { |r| require r }
 %w[redis json logger].each { |r| require r }
 require_relative 'spooler_native'
 require_relative 'spooler_db'
 require_relative 'customer'
 
 class Import
-
-  # CKEYS = [:id, :msisdn, :acct, :fn, :ln, :zip]
 
   def initialize(dest = :db, fname = '')
     @s = SpoolerNative.new(fname) if dest != :db
@@ -30,7 +21,6 @@ class Import
       if a.size != 6 
         @logger.error "Invalid data in row #{i}: #{l}"
       else
-        # h = Hash[CKEYS.zip(a)]
         @s.spool('set' , "cons:#{c.id}", c.to_json)
         @s.spool('hset', 'cons:lookup:msisdn', c.msisdn, c.id)
         @s.spool('hset', 'cons:lookup:acct', c.acct, c.id)
