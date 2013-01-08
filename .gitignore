@@ -3,3 +3,5 @@
 /tmp
 /output/*
 /data/sample.csv
+/data/priv*
+
