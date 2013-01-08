@@ -1,0 +1,45 @@
+!!! 5
+%html
+  %head
+    %title Sinatra App
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/style.css'}
+  %body
+    %h1 Search Customer
+    %form{ :action => "/search", :method => "get" }
+      %fieldset
+        %ol
+          %li
+            %label{:for => "fn"} First name:
+            %input{:type => "text", :name => "fn", :class => "text"}
+          %li
+            %label{:for => "ln"} Last name:
+            %input{:type => "text", :name => "ln", :class => "text"}
+          %li
+            %label{:for => "zip"} ZIP:
+            %input{:type => "text", :name => "zip", :class => "text"}
+          %li
+            %label{:for => "acct"} Account:
+            %input{:type => "text", :name => "acct", :class => "text"}
+          %li
+            %label{:for => "msisdn"} MSISDN:
+            %input{:type => "text", :name => "msisdn", :class => "text"}
+        %input{:type => "submit", :value => "Search", :class => "button"}
+
+    %h1 Search Result
+    %table
+      %thead
+        %tr
+          %th MSISDN
+          %th Account
+          %th First name
+          %th Last name
+          %th ZIP
+      %tbody
+      - @customers.each do |c|
+        %tr
+          %td= c.msisdn
+          %td= c.acct
+          %td= c.fn
+          %td= c.ln
+          %td= c.zip
+

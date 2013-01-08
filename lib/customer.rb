@@ -6,7 +6,8 @@ class Customer
 
   CKEYS.each do |a|
     # to check, symbols?
-    define_method(a.to_s) { @h[a.to_s] }
+    # define_method(a.to_s) { @h[a.to_s] }
+    define_method(a) { @h[a] }
   end
 
   def to_json(*a)
@@ -20,7 +21,9 @@ class Customer
   end
 
   def self.get(db, id)
-    Customer.new(db.get("cons:#{id}"))
+    xx = Customer.new(db.get("cons:#{id}"))
+    puts xx.to_s
+    xx
   end
 
   def self.get_by_msisdn(db, msisdn)
@@ -32,11 +35,16 @@ class Customer
   end
 
   def self.search(db, p)
+    r = []
     if !p['msisdn'].to_s.empty?
-      return [ self.get_by_msisdn(db, p['msisdn']) ]
-    elseif p.key? :acct
-      return [ self.get_by_acct(db, p['acct']) ]
+      # return [ self.get_by_msisdn(db, p['msisdn']) ]
+      e = self.get_by_msisdn(db, p['msisdn'])
+      r << e unless e.nil?
+    elsif p.key? :acct
+      e = self.get_by_acct(db, p['acct'])
+      r << e unless e.nil?
     end
+    r 
   end
 
 end
