@@ -1,7 +1,9 @@
 /.bundle
+/.sass-cache
 /log/*.log
 /tmp
 /output/*
 /data/sample.csv
 /data/priv*
+/vendor
 
