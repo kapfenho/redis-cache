@@ -2,49 +2,57 @@
 %html
   %head
     %title Sinatra App
-    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/style.css'}
+    %script{:src => '/lib/jquery-1.8.3.min.js', :type => 'text/javascript'}
+    %script{:src => '/lib/bootstrap/js/bootstrap.min.js'}
+    %link{:rel => 'stylesheet', :href => '/lib/bootstrap/css/bootstrap.min.css'}
   %body
-    %h1 Search Customer
-    %form{ :action => "/search", :method => "get" }
-      %fieldset
-        %ol
-          %li
-            %label{:for => "fn"} First name:
-            %input{:type => "text", :name => "fn", :class => "text"}
-          %li
-            %label{:for => "ln"} Last name:
-            %input{:type => "text", :name => "ln", :class => "text"}
-          %li
-            %label{:for => "zip"} ZIP:
-            %input{:type => "text", :name => "zip", :class => "text"}
-          %li
-            %label{:for => "acct"} Account:
-            %input{:type => "text", :name => "acct", :class => "text"}
-          %li
-            %label{:for => "msisdn"} MSISDN:
-            %input{:type => "text", :name => "msisdn", :class => "text"}
-        %input{:type => "submit", :value => "Search", :class => "button"}
+    .container
+      %h1 Search Customer
+      %form{ :class => "form-horizontal", :action => "/search", :method => "get" }
+        .control-group
+          %label{:class => "control-label", :for => "fn"} First name:
+          .controls
+            %input{:type => "text", :name => "fn", :class => "text", :placeholder => "Tom"}
+        .control-group
+          %label{:class => "control-label", :for => "ln"} Last name:
+          .controls
+            %input{:type => "text", :name => "ln", :class => "text", :placeholder => "Tiger"}
+        .control-group
+          %label{:class => "control-label", :for => "zip"} ZIP:
+          .controls
+            %input{:type => "text", :name => "zip", :class => "text", :placeholder => "1010"}
+        .control-group
+          %label{:class => "control-label", :for => "acct"} Account:
+          .controls
+            %input{:type => "text", :name => "acct", :class => "text", :placeholder => "912312312"}
+        .control-group
+          %label{:class => "control-label", :for => "msisdn"} MSISDN:
+          .controls
+            %input{:type => "text", :name => "msisdn", :class => "text", :placeholder => "6601234567"}
+        .control-group
+          .controls
+            %button{:type => "submit", :class => "btn btn-primary"} Search
 
-    %h1 Search Result
-    %table
-      %thead
-        %tr
-          %th ID
-          %th MSISDN
-          %th Account
-          %th First name
-          %th Last name
-          %th ZIP
-      %tbody
-      - @customers.each do |c|
-        %tr
-          %td= c.id
-          %td= c.msisdn
-          %td= c.acct
-          %td= c.fn
-          %td= c.ln
-          %td= c.zip
+      %h1 Search Result
+      %table{:class => "table table-striped"}
+        %thead
+          %tr
+            %th ID
+            %th MSISDN
+            %th Account
+            %th First name
+            %th Last name
+            %th ZIP
+        %tbody
+          - @customers.each do |c|
+            %tr
+              %td= c.id
+              %td= c.msisdn
+              %td= c.acct
+              %td= c.fn
+              %td= c.ln
+              %td= c.zip
 
-    %br
-    Call time in sec:
-    = @ct.to_s unless @ct.nil?
+      %br
+      Call time in sec:
+      = @ct.to_s unless @ct.nil?

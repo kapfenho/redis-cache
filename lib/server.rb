@@ -21,7 +21,7 @@ get '/search' do
   haml :index, :format => :html5
 end
 
-get '/style.css' do
-  scss :style
-end
+# get '/style.css' do
+#   scss :style
+# end
 
