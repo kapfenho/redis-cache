@@ -7,7 +7,7 @@
     %link{:rel => 'stylesheet', :href => '/lib/bootstrap/css/bootstrap.min.css'}
   %body
     .container
-      %h2 search customer
+      %h2 Customer Search
       %form{ :class => "form-horizontal", :action => "/search", :method => "get" }
         .control-group
           %label{:class => "control-label", :for => "fn"} First name:
@@ -33,7 +33,7 @@
           .controls
             %button{:type => "submit", :class => "btn btn-primary"} Search
 
-      %h2 search result
+      %h2 Search Result
       %table{:class => "table table-striped"}
         %thead
           %tr

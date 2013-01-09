@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'json'
 
 class Customer
@@ -19,9 +20,7 @@ class Customer
   end
 
   def self.get(db, id)
-    xx = Customer.new(db.get("cons:#{id}")) unless id.nil?
-    puts xx.to_s
-    xx
+    Customer.new(db.get("cons:#{id}")) unless id.nil?
   end
 
   def self.get_by_msisdn(db, msisdn)
@@ -34,7 +33,9 @@ class Customer
 
   def self.mget_by_ln(db, ln)
     r = []
+    puts "Ln: #{ln}"
     l = db.smembers("cons:ln:#{ln}")
+    puts l.inspect
     l.each do |e|
       r << self.get(db, e)
     end
@@ -44,7 +45,7 @@ class Customer
   def self.search(db, pt)
     p, r = {}, []
     pt.each do |k,v|  # sanitze and untaint
-      v1 = v.gsub(/[^a-zA-Z0-9]/, '')
+      v1 = v.gsub(/[^a-zA-Z0-9öäüÖÄÜß]/, '')
       v1.untaint
       p[k] = v1
     end 
