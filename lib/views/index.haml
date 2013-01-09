@@ -1,5 +1,5 @@
 !!! 5
-%html
+%html{:lang => "en"}
   %head
     %title Sinatra App
     %script{:src => '/lib/jquery-1.8.3.min.js', :type => 'text/javascript'}
@@ -7,7 +7,7 @@
     %link{:rel => 'stylesheet', :href => '/lib/bootstrap/css/bootstrap.min.css'}
   %body
     .container
-      %h1 Search Customer
+      %h2 search customer
       %form{ :class => "form-horizontal", :action => "/search", :method => "get" }
         .control-group
           %label{:class => "control-label", :for => "fn"} First name:
@@ -33,7 +33,7 @@
           .controls
             %button{:type => "submit", :class => "btn btn-primary"} Search
 
-      %h1 Search Result
+      %h2 search result
       %table{:class => "table table-striped"}
         %thead
           %tr
@@ -54,5 +54,6 @@
               %td= c.zip
 
       %br
-      Call time in sec:
-      = @ct.to_s unless @ct.nil?
+      %div{ :class => "alert alert-info"}
+        Call time in sec:
+        = @ct.to_s unless @ct.nil?
