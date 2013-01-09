@@ -33,9 +33,7 @@ class Customer
 
   def self.mget_by_ln(db, ln)
     r = []
-    puts "Ln: #{ln}"
     l = db.smembers("cons:ln:#{ln}")
-    puts l.inspect
     l.each do |e|
       r << self.get(db, e)
     end
