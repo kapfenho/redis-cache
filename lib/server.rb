@@ -1,4 +1,3 @@
-# require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
 require 'redis'
@@ -20,8 +19,4 @@ get '/search' do
   @ct = Time.now - start
   haml :index, :format => :html5
 end
-
-# get '/style.css' do
-#   scss :style
-# end
 
